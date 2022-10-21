@@ -54,5 +54,25 @@
         </div>
     </div>
 </div>
+<script>
+    $(function() {
+        var socket = io.connect();
+        var $messageForm = $("##messageForm"); //get data from the form
+        var $message = $("#message");
+        var $chat = $("#chat");
+
+        $messageForm.submit(function(e) { //form btn click event handler
+            e.preventDefault(); // prevent default form submission
+            socket.emit("send message", $message.val()); //trap data from form txt box,
+            $message.val(''); //clear the form text box
+            console.log("submitted");
+
+        });
+
+        socket.on("new message", function (data) {
+            $chat.append('<div class="well">' + data.msg + '</div');
+        });
+    })
+</script>
   </body>
 </html>
