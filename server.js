@@ -17,7 +17,7 @@ io.sockets.on("connection", function (socket) {
     //when client connects to server/
 
     connections.push(socket); //add plug details to custom array/
-    console.log("connected> %s socket connected", connections.length); //curr connection/
+    console.log("connected: %s socket connected", connections.length); //curr connection/
     socket.on("disconnected", function (data) {
         //client disc. frm server/
         connections.splice(connection.indexOf(socket), 1); //delete plug details/
